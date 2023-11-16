@@ -45,9 +45,9 @@ This part was not done, since talk was canceled.
 
 <h6 align="center">
 
-• &nbsp; [T&T](../../../README.md) &nbsp;
+• &nbsp; [T&T](/README.md) &nbsp;
 •>&nbsp; Talks &nbsp;<•
-&nbsp; [Topics](../../../topics/README.md) &nbsp;
+&nbsp; [Topics](/topics/README.md) &nbsp;
 •
 
 </h6>
@@ -55,7 +55,7 @@ This part was not done, since talk was canceled.
 <h6 align="center">
 
 •>&nbsp; 2022 &nbsp;<•
-&nbsp; [2023](../../2023/README.md) &nbsp;
+&nbsp; [2023](/talks/2023/README.md) &nbsp;
 •
 
 </h6>

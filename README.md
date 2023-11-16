@@ -6,8 +6,8 @@ Source codes and documentation for my talks and topics.
 
 Talks are in form of presentations or workshops, that were planned to be presented before some audience. They will contain some information on how to run them, what to look for.
 
-- [All](talks)
-- [2022](talks/2022/README.md)
+- [All](/talks)
+- [2022](/talks/2022/README.md)
 
 ## Topics
 
@@ -33,8 +33,8 @@ Found this project useful or want to buy me a 🍺, ☕, 🍵. Consider donating
 <h6 align="center">
 
 •>&nbsp; T&T &nbsp;<•
-&nbsp; [Talks](talks/2022/README.md) &nbsp;
-• &nbsp; [Topics](topics/README.md) &nbsp;
+&nbsp; [Talks](/talks/2022/README.md) &nbsp;
+• &nbsp; [Topics](/topics/README.md) &nbsp;
 •
 
 </h6>
