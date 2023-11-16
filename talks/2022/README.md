@@ -10,10 +10,10 @@ List of talks and their status.
 ❌ - cancelled
 💬 - planned
 
-| Scope | Name                                                          | Status + Location       | Authors                           |
-| ----- | ------------------------------------------------------------- | ----------------------- | --------------------------------- |
-| .NET  | [Request pipeline](<.NET Analyzers and Generators/README.md>) | ✔️ 3PG - .NET community | [MGSE](https://github.com/MGSE97) |
-| .NET  | [Analyzers and Generators](<.NET Request pipeline/README.md>) | ❌ 3PG - .NET community | [MGSE](https://github.com/MGSE97) |
+| Scope | Name                                                                  | Status + Location       | Authors                           |
+| ----- | --------------------------------------------------------------------- | ----------------------- | --------------------------------- |
+| .NET  | [Request pipeline](<.NET Request pipeline/README.md>)                 | ✔️ 3PG - .NET community | [MGSE](https://github.com/MGSE97) |
+| .NET  | [Analyzers and Generators](<.NET Analyzers and Generators/README.md>) | ❌ 3PG - .NET community | [MGSE](https://github.com/MGSE97) |
 
 ---
 
