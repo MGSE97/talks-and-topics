@@ -1,3 +1,7 @@
+[< Back to talks](../README.md)
+
+---
+
 # ASP.NET Request pipeline comparison
 
 ASP.NET MVC 5 vs ASP.NET Core request pipeline processing comparison.
@@ -95,3 +99,34 @@ The `OnAction...` and `OnResult...` logs are from `LogFilterAttribute`, same as 
 The `Begin Request` and `End Request` are from `log` function in `Program.cs`. We are using middleware to log these. Unlike before, we can't get logs of each step, without wrapping each of the middlewares used. Instead, we can look into all the `app.Use...` and `app.Map...` to see what will happen to request. Also, we can now fully control, what steps the request will go thought. This is the main difference between `.NET Core` and `.NET Framework` web apps.
 
 We can also see other static files being logged. These files will be served by `app.UseStaticFiles` middleware, and they will not get into controllers. Order of these middlewares is important!
+
+## Authors
+
+- [**MGSE**](https://github.com/MGSE97)
+
+---
+
+<h6 align="center">
+
+• &nbsp; [T&T](../../../README.md) &nbsp;
+•>&nbsp; Talks &nbsp;<•
+&nbsp; [Topics](../../../topics/README.md) &nbsp;
+•
+
+</h6>
+
+<h6 align="center">
+
+•>&nbsp; 2022 &nbsp;<•
+&nbsp; [2023](../../2023/README.md) &nbsp;
+•
+
+</h6>
+
+<h6 align="center">
+
+[< Back to talks](../README.md)
+&nbsp;&nbsp; • &nbsp;&nbsp;
+<b><a href="https://github.com/MGSE97" target="_blank">MGSE</a> ☕ 2016 ... 2023</b>
+
+</h6>
