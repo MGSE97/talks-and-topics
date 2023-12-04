@@ -6,9 +6,17 @@
 
 <main>
     <section class="row" aria-labelledby="title">
-        <h2 id="title">MVC</h2>
-        <p class="lead">This is a Weather API demo frontend. You can look through different implementations bellow or in main menu. Server API stays the same for all versions.</p>
+        <div class="d-inline-flex justify-content-between align-items-baseline">
+            <h1 id="title">MVC</h1>
+            <h6><a class="text-decoration-none w-auto" href="https://learn.microsoft.com/cs-cz/aspnet/mvc/overview/getting-started/introduction/" target="_blank"><i class="fa fa-solid fa-external-link-alt"></i> Docs</a></h6>
+        </div>
+        <p class="lead">
+            This is a Weather API demo frontend for MVC. 
+            You can look through different implementations in main menu. 
+            Server API stays the same for all versions.
+        </p>
     </section>
+    <hr/>
     <section class="row">
         <div class="col-6">
             <div class="row mb-3">
@@ -73,6 +81,8 @@
         month: 'numeric',
         day: 'numeric',
     })
+
+    // Handle autocomplete
     input.onkeyup = async (e) => {
         if (!e.keyCode) return
         var location = input.value
@@ -86,6 +96,8 @@
         var response = await locations.json()
         autocomplete.innerHTML = response.map(location => `<option value="${location}"></option>`).join('')
     }
+
+    // Handle selection
     input.onchange = async () => {
         var location = input.value
         var weather = await fetch(`/api/weather/locations/${location}`)

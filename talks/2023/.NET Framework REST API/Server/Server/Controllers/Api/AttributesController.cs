@@ -14,24 +14,24 @@ namespace Server.Controllers
         {
         }
 
-        // GET api/attributes
+        // GET api/attributes/5
         /// <summary>
         /// Gonna
         /// </summary>
         [HttpGet]
-        public IEnumerable<string> Gonna()
+        public string Gonna(int id)
         {
-            return new string[] { "value1", "value2" };
+            return "value";
         }
 
-        // GET api/attributes/5
+        // GET api/attributes
         /// <summary>
         /// Give
         /// </summary>
         [HttpGet]
-        public string Give(int id)
+        public IEnumerable<string> Give()
         {
-            return "value";
+            return new string[] { "value1", "value2" };
         }
 
         // POST api/attributes
@@ -48,7 +48,7 @@ namespace Server.Controllers
         /// Up
         /// </summary>
         [HttpPut]
-        public void Up(int id, [FromBody] string value)
+        public void Up([FromBody] string value)
         {
         }
     }

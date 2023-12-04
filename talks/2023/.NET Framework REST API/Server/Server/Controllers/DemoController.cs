@@ -3,6 +3,7 @@ using Server.Models;
 using System;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace Server.Controllers
 {
@@ -19,12 +20,7 @@ namespace Server.Controllers
             return View(await GetCountryWeather());
         }
 
-        public async Task<ActionResult> WebApp()
-        {
-            return View(await GetCountryWeather());
-        }
-
-        public async Task<ActionResult> WebForm()
+        public async Task<ActionResult> Razor()
         {
             return View(await GetCountryWeather());
         }

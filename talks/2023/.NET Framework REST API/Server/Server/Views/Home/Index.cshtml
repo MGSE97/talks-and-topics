@@ -3,43 +3,66 @@
         <h1 id="aspnetTitle">ASP.NET Framework Web API</h1>
         <p class="lead">This is a Weather API demo frontend. You can look through different implementations bellow or in main menu. Server API stays the same for all versions.</p>
     </section>
+    <hr />
     <div class="row">
         <section class="col-md-4" aria-labelledby="api">
-            <h2 id="api">API</h2>
-            <p>ASP.NET Web API documentation generated at runtime.</p>
-            <p>@Html.ActionLink("Show docs »", "Index", "Help", new { area = "" }, new { @class = "btn btn-outline-dark" })</p>
+            <div class="h-100 d-flex flex-column">
+                <h2 id="api">API</h2>
+                <p class="flex-grow-1">ASP.NET Web API documentation generated at runtime.</p>
+                <p>@Html.ActionLink("Show docs »", "Index", "Help", new { area = "" }, new { @class = "btn btn-outline-dark" })</p>
+            </div>
+        </section>
+        <section class="col-md-4" aria-labelledby="api">
+            <div class="h-100 d-flex flex-column">
+                <h2 id="api">Swagger</h2>
+                <p class="flex-grow-1">Swagger API documentation generated at runtime.</p>
+                <p><a href="/swagger" class="btn btn-outline-dark" target="_blank">Show docs »</a></p>
+            </div>
         </section>
     </div>
+    <hr />
     <div class="row">
         <section class="col-md-4" aria-labelledby="mvc">
-            <h2 id="mvc">MVC</h2>
-            <p>Server rendered FE, that uses Model View Controller approach.</p>
-            <p>@Html.ActionLink("Show demo »", "MVC", "Demo", new { area = "" }, new { @class = "btn btn-outline-dark" })</p>
+            <div class="h-100 d-flex flex-column">
+                <h2 id="mvc">MVC</h2>
+                <p class="flex-grow-1">Server rendered FE, that uses Model View Controller approach.</p>
+                <p>@Html.ActionLink("Show demo »", "MVC", "Demo", new { area = "" }, new { @class = "btn btn-outline-dark" })</p>
+            </div>
         </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Forms</h2>
-            <p>ToDo</p>
-            <p>@Html.ActionLink("Show demo »", "WebForm", "Demo", new { area = "" }, new { @class = "btn btn-outline-dark" })</p>
+        <section class="col-md-4" aria-labelledby="forms">
+            <div class="h-100 d-flex flex-column">
+                <h2 id="forms">Web Forms</h2>
+                <p class="flex-grow-1">Server rendered FE, that uses Web Forms form.</p>
+                <p>@Html.RouteLink("Show demo »", "WebForm", new { area = "" }, new { @class = "btn btn-outline-dark" })</p>
+            </div>
         </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web App</h2>
-            <p>ToDo</p>
-            <p>@Html.ActionLink("Show demo »", "WebApp", "Demo", new { area = "" }, new { @class = "btn btn-outline-dark" })</p>
+        <section class="col-md-4 opacity-25" aria-labelledby="razor">
+            <div class="h-100 d-flex flex-column">
+                <h2 id="razor">Razor pages</h2>
+                <p class="flex-grow-1">Server rendered FE, that uses Razor pages.</p>
+                <p>@Html.ActionLink("Show demo »", "WebApp", "Demo", new { area = "" }, new { @class = "btn btn-outline-dark disabled" })</p>
+            </div>
         </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">SPA</h2>
-            <p>ToDo</p>
-            <p>@Html.ActionLink("Show demo »", "SPA", "Demo", new { area = "" }, new { @class = "btn btn-outline-dark" })</p>
+        <section class="col-md-4 opacity-25" aria-labelledby="spa">
+            <div class="h-100 d-flex flex-column">
+                <h2 id="spa">SPA</h2>
+                <p class="flex-grow-1">Single page application, on client side.</p>
+                <p>@Html.ActionLink("Show demo »", "SPA", "Demo", new { area = "" }, new { @class = "btn btn-outline-dark disabled" })</p>
+            </div>
         </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Svelte</h2>
-            <p>ToDo</p>
-            <p>@Html.ActionLink("Show demo »", "Svelte", "Demo", new { area = "" }, new { @class = "btn btn-outline-dark" })</p>
+        <section class="col-md-4 opacity-25" aria-labelledby="svelte">
+            <div class="h-100 d-flex flex-column">
+                <h2 id="svelte">Svelte</h2>
+                <p class="flex-grow-1">Svelte application, running in separate process.</p>
+                <p>@Html.ActionLink("Show demo »", "Svelte", "Demo", new { area = "" }, new { @class = "btn btn-outline-dark disabled" })</p>
+            </div>
         </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Astro</h2>
-            <p>ToDo</p>
-            <p>@Html.ActionLink("Show demo »", "Astro", "Demo", new { area = "" }, new { @class = "btn btn-outline-dark" })</p>
+        <section class="col-md-4 opacity-25" aria-labelledby="astro">
+            <div class="h-100 d-flex flex-column">
+                <h2 id="astro">Astro</h2>
+                <p class="flex-grow-1">Astro compiled pages, hosted as static files.</p>
+                <p>@Html.ActionLink("Show demo »", "Astro", "Demo", new { area = "" }, new { @class = "btn btn-outline-dark disabled" })</p>
+            </div>
         </section>
     </div>
 </main>

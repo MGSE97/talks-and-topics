@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DB;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.SqlServer;
@@ -15,6 +16,25 @@ namespace Server.Domain
         {
             _weatherContext = context;
         }
+
+        public Task<List<string>> GetLocations(string query) 
+            => (
+                from daily in Table
+                where daily.Location.Contains(query)
+                group daily by daily.Location into g
+                orderby g.Key
+                select g.Key
+            ).ToListAsync();
+
+        public Task<List<WeatherDaily>> Search7Days(DateTime date, string location)
+            => (
+                from daily in Table
+                where
+                        daily.Location == location
+                    && daily.Date >= date
+                    && daily.Date <= SqlFunctions.DateAdd("day", 7, date)
+                select daily
+            ).ToListAsync();
 
         public async Task<List<WeatherDaily>> Country7Days(DateTime date) 
             => (
@@ -42,23 +62,5 @@ namespace Server.Domain
                     Rain = r.Rain,
                     Temperature = r.Temperature,
                 }).ToList();
-
-        public Task<List<string>> GetLocations(string query) => (
-                from daily in Table
-                where daily.Location.Contains(query)
-                group daily by daily.Location into g
-                orderby g.Key
-                select g.Key
-            ).ToListAsync();
-
-        public Task<List<WeatherDaily>> Search7Days(DateTime date, string location)
-            => (
-                from daily in Table
-                where
-                        daily.Location == location
-                    && daily.Date >= date
-                    && daily.Date <= SqlFunctions.DateAdd("day", 7, date)
-                select daily
-            ).ToListAsync();
     }
 }

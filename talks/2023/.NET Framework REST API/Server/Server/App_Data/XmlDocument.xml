@@ -486,12 +486,12 @@
             Never
             </summary>
         </member>
-        <member name="M:Server.Controllers.AttributesController.Gonna">
+        <member name="M:Server.Controllers.AttributesController.Gonna(System.Int32)">
             <summary>
             Gonna
             </summary>
         </member>
-        <member name="M:Server.Controllers.AttributesController.Give(System.Int32)">
+        <member name="M:Server.Controllers.AttributesController.Give">
             <summary>
             Give
             </summary>
@@ -501,10 +501,46 @@
             You
             </summary>
         </member>
-        <member name="M:Server.Controllers.AttributesController.Up(System.Int32,System.String)">
+        <member name="M:Server.Controllers.AttributesController.Up(System.String)">
             <summary>
             Up
             </summary>
+        </member>
+        <member name="M:Server.Controllers.WeatherController.Get">
+            <summary>
+            Gets weather for whole country
+            </summary>
+            <returns>Country weather for next 7 days</returns>
+        </member>
+        <member name="M:Server.Controllers.WeatherController.Get(System.String)">
+            <summary>
+            Gets weather for specific location
+            </summary>
+            <returns>Location weather for next 7 days</returns>
+        </member>
+        <member name="M:Server.Controllers.WeatherController.Post(System.String)">
+            <summary>
+            Search locations for autocomplete
+            </summary>
+            <returns>Valid locations</returns>
+        </member>
+        <member name="F:Server.Views.Demo.WebForm.form">
+            <summary>
+            form control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:Server.Views.Demo.WebForm.Search">
+            <summary>
+            Search control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
         </member>
     </members>
 </doc>

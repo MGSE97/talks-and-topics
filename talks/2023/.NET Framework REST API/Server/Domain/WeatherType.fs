@@ -1,4 +1,4 @@
-﻿namespace Weather
+﻿namespace Domain.Weather
 
 type WeatherType =
     | Sunny = 0
