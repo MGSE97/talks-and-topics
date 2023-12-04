@@ -1,0 +1,115 @@
+﻿@using Server.Models;
+@model WeatherDemo
+@{
+    ViewBag.Title = "MVC";
+}
+
+<main>
+    <section class="row" aria-labelledby="title">
+        <h2 id="title">MVC</h2>
+        <p class="lead">This is a Weather API demo frontend. You can look through different implementations bellow or in main menu. Server API stays the same for all versions.</p>
+    </section>
+    <section class="row">
+        <div class="col-6">
+            <div class="row mb-3">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text rounded-0 rounded-start">Location:</span>
+                    </div>
+                    @Html.TextBoxFor(m => m.Search, new { id = "search", list="search-options", @class = "form-control mw-100", placeholder = "Česká Republika" })
+                    <datalist id="search-options"></datalist>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <table class="table table-striped table-bordered table-hover table-responsive text-center">
+                        <thead>
+                            <tr>
+                                <th><i class="fa-solid fa-calendar-day"></i> Date</th>
+                                <th><i class="fa-solid fa-cloud-sun"></i> Weather</th>
+                                <th><i class="fa-solid fa-temperature-half"></i> Temperature</th>
+                                <th><i class="fa-solid fa-droplet"></i> Rain</th>
+                            </tr>
+                        </thead>
+                        <tbody id="data">
+                            @if (Model.WeatherData?.Count <= 0)
+                            {
+                                <tr>
+                                    <td colspan="4">
+                                        <div class="alert alert-warning border-warning rounded text-center" role="alert">
+                                            <b>No data</b>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                            else
+                            {
+                                foreach (var weather in Model.WeatherData)
+                                {
+                                    <tr>
+                                        <td>@weather.Date.ToLocalTime().ToString("dddd d.M.")</td>
+                                        <td>@weather.Type.ToHtml() @weather.Type</td>
+                                        <td>@weather.Temperature.ToString("f0") °C</td>
+                                        <td>@weather.Rain.ToString("f2") mm/h</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        @Html.Partial("_ApiStats", ViewData)
+    </section>
+</main>
+
+<script>
+    let types = [@Html.Raw(string.Join(", ", typeof(WeatherType).GetEnumValues().Cast<WeatherType>().Select(v => $"'{v.ToHtml()} {v}'")))]
+    let data = document.getElementById("data")
+    let input = document.getElementById("search")
+    let autocomplete = document.getElementById("search-options")
+    const formatter = new Intl.DateTimeFormat(undefined, {
+        weekday: 'long',
+        month: 'numeric',
+        day: 'numeric',
+    })
+    input.onkeyup = async (e) => {
+        if (!e.keyCode) return
+        var location = input.value
+        var locations = await fetch(`/api/weather/locations/search`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            },
+            body: JSON.stringify(location)
+        })
+        var response = await locations.json()
+        autocomplete.innerHTML = response.map(location => `<option value="${location}"></option>`).join('')
+    }
+    input.onchange = async () => {
+        var location = input.value
+        var weather = await fetch(`/api/weather/locations/${location}`)
+        var response = await weather.json()
+        if (response.length > 0) {
+            data.innerHTML = response.map(w => `
+                <tr>
+                    <td>${formatter.format(new Date(w.Date))}</td>
+                    <td>${types[w.Type]}</td>
+                    <td>${Math.floor(w.Temperature)} °C</td>
+                    <td>${w.Rain.toFixed(2)} mm/h</td>
+                </tr>
+            `).join('')
+        }
+        else {
+            data.innerHTML = `
+                <tr>
+                    <td colspan="4">
+                        <div class="alert alert-warning border-warning rounded text-center" role="alert">
+                            <b>No data</b>
+                        </div>
+                    </td>
+                </tr>
+            `
+        }
+    }
+</script>
