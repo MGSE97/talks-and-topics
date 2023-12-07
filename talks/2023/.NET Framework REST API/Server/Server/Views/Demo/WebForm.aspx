@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm.aspx.cs" Inherits="Server.Views.Demo.WebForm" %>
+﻿<%@ Page Async="true" Language="C#" AutoEventWireup="true" CodeBehind="WebForm.aspx.cs" Inherits="Server.Views.Demo.WebForm" %>
 
 <!DOCTYPE html>
 
@@ -51,8 +51,8 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text rounded-0 rounded-start">Location:</span>
                                 </div>
-                                <asp:TextBox runat="server" ID="Search" CssClass="form-control mw-100" AutoPostBack="True" list="search-options" placeholder="Česká Republika"></asp:TextBox>
-                                <asp:DataList runat="server" ID="SearchOptions"></asp:DataList>
+                                <asp:TextBox runat="server" ID="Search" CssClass="form-control mw-100" AutoCompleteType="None" AutoPostBack="True" OnTextChanged="Search_TextChanged" list="search-options" placeholder="Česká Republika"></asp:TextBox>
+                                <datalist id="search-options"></datalist>
                             </div>
                         </div>
                         <div class="row">
@@ -67,6 +67,7 @@
                                         </tr>
                                     </thead>
                                     <tbody id="data">
+                                            <% if (Weather.WeatherData is null || Weather.WeatherData.Count == 0) {%>
                                             <tr>
                                                 <td colspan="4">
                                                     <div class="alert alert-warning border-warning rounded text-center" role="alert">
@@ -74,6 +75,43 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                            <% } else {
+                                                foreach(var weather in Weather.WeatherData) {
+                                                %>        
+                                                    <tr>
+                                                        <td><%= weather.Date.ToLocalTime().ToString("dddd d.M.") %></td>
+                                                        <td><%= weather.Type.ToHtml() %> <%= weather.Type %></td>
+                                                        <td><%= weather.Temperature.ToString("f0") %> °C</td>
+                                                        <td><%= weather.Rain.ToString("f2") %> mm/h</td>
+                                                    </tr>
+                                                <% 
+                                                }
+                                            } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row mb-3">
+                            <h4>Api Statistics</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <table class="table table-striped table-bordered table-hover table-responsive text-center">
+                                    <thead>
+                                        <tr>
+                                            <th>Endpoint</th>
+                                            <th>Data</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="api-data">
+                                        <% foreach (var (url, data) in (ViewState["requests"] as List<(string, string)>).Take(7)) { %>
+                                            <tr>
+                                                <td><%= url %></td>
+                                                <td><%= data %></td>
+                                            </tr>
+                                        <% } %>
                                     </tbody>
                                 </table>
                             </div>
@@ -91,5 +129,24 @@
 
     <%: Scripts.Render("~/bundles/jquery") %>
     <%: Scripts.Render("~/bundles/bootstrap") %>
+    
+    <script>
+        let input = document.getElementById("Search")
+        let autocomplete = document.getElementById("search-options")
+        // Handle autocomplete
+        input.onkeyup = async (e) => {
+            if (!e.keyCode) return
+            var location = input.value
+            var locations = await fetch(`/api/weather/locations/search`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                },
+                body: JSON.stringify(location)
+            })
+            var response = await locations.json()
+            autocomplete.innerHTML = response.map(location => `<option value="${location}"></option>`).join('')
+        }
+    </script>
 </body>
 </html>
